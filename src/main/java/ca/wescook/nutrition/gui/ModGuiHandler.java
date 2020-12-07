@@ -2,7 +2,7 @@ package ca.wescook.nutrition.gui;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
+//import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class ModGuiHandler implements IGuiHandler {
 	// GUI IDs

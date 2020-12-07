@@ -1,0 +1,9 @@
+{
+  "name": "dairy",
+  "icon": "minecraft:milk_bucket",
+  "color": "a0d4f7",
+  "enabled": true,
+  "food": [
+    "#nutrition:dairy"
+  ]
+}

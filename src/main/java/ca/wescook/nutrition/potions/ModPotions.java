@@ -1,6 +1,6 @@
 package ca.wescook.nutrition.potions;
 
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.util.ResourceLocation;
 
@@ -21,19 +21,19 @@ public class ModPotions {
 		// Toughness
 		toughness = new PotionToughness(true, new ResourceLocation("nutrition", "textures/potions/toughness.png"));
 		toughness.setRegistryName("toughness");
-		toughness.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, Operation.ADDITION);
-		toughness.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, Operation.ADDITION);
-		toughness.addAttributesModifier(SharedMonsterAttributes.ARMOR_TOUGHNESS, TOUGHNESS_ARMOR.toString(), 0D, Operation.ADDITION);
-		toughness.addAttributesModifier(SharedMonsterAttributes.ATTACK_SPEED, TOUGHNESS_ATTACK_SPEED.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(Attributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(Attributes.MAX_HEALTH, TOUGHNESS_HEALTH.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(Attributes.ARMOR_TOUGHNESS, TOUGHNESS_ARMOR.toString(), 0D, Operation.ADDITION);
+		toughness.addAttributesModifier(Attributes.ATTACK_SPEED, TOUGHNESS_ATTACK_SPEED.toString(), 0D, Operation.ADDITION);
 
 		// Nourished
 		nourished = new PotionNourished(true, new ResourceLocation("nutrition", "textures/potions/nourished.png"));
 		nourished.setRegistryName("nourished");
-		nourished.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, Operation.ADDITION);
+		nourished.addAttributesModifier(Attributes.MAX_HEALTH, NOURISHMENT_HEALTH.toString(), 0D, Operation.ADDITION);
 
 		// Malnourished
 		malnourished = new PotionMalnourished(true, new ResourceLocation("nutrition", "textures/potions/malnourished.png"));
 		malnourished.setRegistryName("malnourished");
-		malnourished.addAttributesModifier(SharedMonsterAttributes.MAX_HEALTH, MALNOURISHMENT_HEALTH.toString(), 0D, Operation.ADDITION);
+		malnourished.addAttributesModifier(Attributes.MAX_HEALTH, MALNOURISHMENT_HEALTH.toString(), 0D, Operation.ADDITION);
 	}
 }

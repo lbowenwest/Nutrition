@@ -7,7 +7,9 @@ import ca.wescook.nutrition.nutrients.NutrientList;
 import ca.wescook.nutrition.utility.ClientData;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -17,7 +19,7 @@ import java.util.Map;
 
 public class PacketNutritionResponse {
 	// Message Subclass
-	public static class Message implements IMessage {
+	public static class Message {
 		@CapabilityInject(INutrientManager.class)
 		private static final Capability<INutrientManager> NUTRITION_CAPABILITY = null;
 
@@ -35,7 +37,6 @@ public class PacketNutritionResponse {
 		}
 
 		// Then serialized into bytes (on server)
-		@Override
 		public void toBytes(ByteBuf buf) {
 			// Loop through nutrients from server player, and add to buffer
 			Map<Nutrient, Float> nutrientData = serverPlayer.getCapability(NUTRITION_CAPABILITY, null).get();
@@ -46,8 +47,7 @@ public class PacketNutritionResponse {
 		}
 
 		// Then deserialized (on the client)
-		@Override
-		public void fromBytes(ByteBuf buf) {
+		public static Message fromBytes(PacketBuffer buf) {
 			// Loop through buffer stream to build nutrition data
 			clientNutrients = new HashMap<>();
 			while(buf.isReadable()) {
@@ -69,7 +69,7 @@ public class PacketNutritionResponse {
 					ClientData.localNutrition.set(message.clientNutrients);
 
 				// If Nutrition GUI is open, update GUI
-				GuiScreen currentScreen = Minecraft.getInstance().currentScreen;
+				Screen currentScreen = Minecraft.getInstance().currentScreen;
 				if (currentScreen != null && currentScreen.equals(ModGuiHandler.nutritionGui))
 					ModGuiHandler.nutritionGui.redrawLabels();
 			});

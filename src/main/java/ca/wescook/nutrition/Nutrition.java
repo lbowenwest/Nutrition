@@ -4,7 +4,6 @@ import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.capabilities.NutritionCapabilityManager;
 import ca.wescook.nutrition.capabilities.SimpleImpl;
 import ca.wescook.nutrition.events.*;
-import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.network.ModPacketHandler;
 import ca.wescook.nutrition.utility.ClientData;
 import ca.wescook.nutrition.utility.Config;
@@ -54,7 +53,7 @@ public class Nutrition {
 	private void onSetup(final FMLCommonSetupEvent event) {
 		ModPacketHandler.registerMessages(); // Register network messages
 		CapabilityManager.INSTANCE.register(INutrientManager.class, new NutritionCapabilityManager.Storage(), SimpleImpl::new); // Registers capability
-		NetworkRegistry.INSTANCE.registerGuiHandler(Nutrition.instance, new ModGuiHandler()); // Register GUI handler
+//		NetworkRegistry.INSTANCE.registerGuiHandler(Nutrition.instance, new ModGuiHandler()); // Register GUI handler
 
 		// TODO: This obviously won't work if fired simultaneously
 		DataImporter.load(); // Load nutrients and effects

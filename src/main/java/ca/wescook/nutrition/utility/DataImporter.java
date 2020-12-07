@@ -13,7 +13,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import org.apache.commons.io.FilenameUtils;
@@ -49,7 +49,7 @@ public class DataImporter {
 	// Updates player capabilities on server so object IDs match those in NutrientList
 	public static void updatePlayerCapabilitiesOnServer(MinecraftServer server) {
 		for (ServerPlayerEntity player : server.getPlayerList().getPlayers())
-			if (!server.getWorld(DimensionType.OVERWORLD).isRemote)
+			if (!server.getWorld(World.OVERWORLD).isRemote)
 				// TODO: IntelliJ wants to make this an object reference.  Test if that will work.
 				player.getCapability(NUTRITION_CAPABILITY).ifPresent(cap -> cap.updateCapability());
 	}

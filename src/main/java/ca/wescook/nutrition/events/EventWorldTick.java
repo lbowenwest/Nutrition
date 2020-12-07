@@ -2,12 +2,12 @@ package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.capabilities.INutrientManager;
 import ca.wescook.nutrition.effects.EffectsManager;
-import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.nutrients.Nutrient;
 import ca.wescook.nutrition.utility.ClientData;
 import ca.wescook.nutrition.utility.Config;
 import com.google.common.primitives.Floats;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -70,9 +70,9 @@ public class EventWorldTick {
 				ClientData.localNutrition.set(playerNutrition);
 
 				// If Nutrition GUI is open, update GUI
-				GuiScreen currentScreen = Minecraft.getInstance().currentScreen;
-				if (currentScreen != null && currentScreen.equals(ModGuiHandler.nutritionGui))
-					ModGuiHandler.nutritionGui.redrawLabels();
+				Screen currentScreen = Minecraft.getInstance().currentScreen;
+//				if (currentScreen != null && currentScreen.equals(ModGuiHandler.nutritionGui))
+//					ModGuiHandler.nutritionGui.redrawLabels();
 			}
 		}
 

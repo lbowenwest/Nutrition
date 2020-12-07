@@ -1,7 +1,6 @@
 package ca.wescook.nutrition.events;
 
 import ca.wescook.nutrition.Nutrition;
-import ca.wescook.nutrition.gui.ModGuiHandler;
 import ca.wescook.nutrition.utility.ClientData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.InputMappings;
@@ -29,7 +28,7 @@ public class EventNutritionKey {
 //		}
 
 		// If Nutrition key is pressed, and F3 key is not being held (F3+N toggles Spectator mode)
-		long handle = Minecraft.getInstance().mainWindow.getHandle();
+		long handle = Minecraft.getInstance().getMainWindow().getHandle();
 		if (ClientData.keyNutritionGui.isKeyDown() && !InputMappings.isKeyDown(handle, GLFW.GLFW_KEY_F3)) {
 			openNutritionGui();
 		}
@@ -42,6 +41,6 @@ public class EventNutritionKey {
 		World world = Minecraft.getInstance().world;
 
 		// Open GUI
-		player.openGui(Nutrition.instance, ModGuiHandler.NUTRITION_GUI_ID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+//		player.openGui(Nutrition.instance, ModGuiHandler.NUTRITION_GUI_ID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 }
